@@ -11,6 +11,7 @@ import { siteConfig } from "@/config/site";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -37,18 +38,36 @@ export default function Navbar() {
             <span className="font-display text-lg font-bold tracking-tight text-paper">{siteConfig.name}</span>
           </Link>
 
-          <nav className="hidden items-center gap-2 md:flex">
-            {siteConfig.nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`rounded-full px-4 py-2 text-sm font-medium uppercase tracking-wide transition-colors duration-300 ${
-                  pathname === item.href ? "bg-paper text-ink" : "text-paper/80 hover:bg-paper/10 hover:text-paper"
-                }`}
-              >
-                {item.label}
-              </Link>
-            ))}
+          <nav className="hidden items-center gap-2 md:flex" onMouseLeave={() => setHovered(null)}>
+            {siteConfig.nav.map((item) => {
+              const active = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onMouseEnter={() => setHovered(item.href)}
+                  className={`relative rounded-full px-4 py-2 text-sm font-medium uppercase tracking-wide transition-colors duration-300 ${
+                    active ? "text-ink" : "text-paper/80 hover:text-paper"
+                  }`}
+                >
+                  {active && (
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute inset-0 -z-10 rounded-full bg-paper"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  {!active && hovered === item.href && (
+                    <motion.span
+                      layoutId="nav-hover"
+                      className="absolute inset-0 -z-10 rounded-full bg-paper/10"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                    />
+                  )}
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
           <Link

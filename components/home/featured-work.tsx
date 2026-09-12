@@ -5,6 +5,7 @@ import { Media } from "@/components/ui/media";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/reveal";
 import { Button } from "@/components/ui/button";
+import { TiltCard } from "@/components/ui/tilt-card";
 
 export default function FeaturedWork() {
   const events = getFeaturedEvents();
@@ -34,31 +35,30 @@ export default function FeaturedWork() {
         <RevealGroup className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-2">
           {events.map((event, i) => (
             <RevealItem key={event.slug} className={i === 0 ? "md:col-span-2" : ""}>
-              <Link
-                href={`/work/${event.slug}`}
-                className="group relative block overflow-hidden rounded-3xl border border-line-soft bg-ink-soft"
-              >
-                <div className={`relative w-full overflow-hidden ${i === 0 ? "aspect-[16/8]" : "aspect-[4/3]"}`}>
-                  <Media
-                    src={event.coverImage}
-                    alt="{{ALT_TEXT}}"
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent opacity-90" />
-                </div>
-                <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
-                  <div>
-                    <span className="text-xs font-semibold uppercase tracking-widest text-ember-2">
-                      {event.category} · {event.year}
-                    </span>
-                    <h3 className="mt-2 font-display text-2xl font-bold text-paper">{event.name}</h3>
+              <TiltCard className="group relative block overflow-hidden rounded-3xl border border-line-soft bg-ink-soft">
+                <Link href={`/work/${event.slug}`} className="block">
+                  <div className={`relative w-full overflow-hidden ${i === 0 ? "aspect-[16/8]" : "aspect-[4/3]"}`}>
+                    <Media
+                      src={event.coverImage}
+                      alt="{{ALT_TEXT}}"
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent opacity-90" />
                   </div>
-                  <span className="flex shrink-0 items-center gap-1 text-sm font-semibold text-paper opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    View <ArrowUpRight size={16} />
-                  </span>
-                </div>
-              </Link>
+                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 p-6">
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-widest text-ember-2">
+                        {event.category} · {event.year}
+                      </span>
+                      <h3 className="mt-2 font-display text-2xl font-bold text-paper">{event.name}</h3>
+                    </div>
+                    <span className="flex shrink-0 items-center gap-1 text-sm font-semibold text-paper opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                      View <ArrowUpRight size={16} />
+                    </span>
+                  </div>
+                </Link>
+              </TiltCard>
             </RevealItem>
           ))}
         </RevealGroup>

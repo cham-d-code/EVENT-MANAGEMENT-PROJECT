@@ -1,5 +1,15 @@
-export function GlowBlob({ className = "" }: { className?: string }) {
-  return <div aria-hidden className={`glow-ember pointer-events-none absolute rounded-full ${className}`} />;
+"use client";
+
+import { motion, type MotionStyle } from "framer-motion";
+
+export function GlowBlob({ className = "", style }: { className?: string; style?: MotionStyle }) {
+  return (
+    <motion.div
+      aria-hidden
+      style={style}
+      className={`glow-ember pointer-events-none absolute rounded-full ${className}`}
+    />
+  );
 }
 
 export function DashedGrid({ className = "", cell = 120 }: { className?: string; cell?: number }) {

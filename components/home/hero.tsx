@@ -1,9 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Media } from "@/components/ui/media";
 import { Button } from "@/components/ui/button";
 import { DashedGrid, GlowBlob } from "@/components/ui/glow";
+import { SplitWords } from "@/components/ui/split-text";
 import { siteConfig } from "@/config/site";
 
 // Swap the hero background between a looping video and a static image
@@ -18,11 +20,24 @@ const tags = [
 ];
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
+  const glowOneY = useTransform(scrollYProgress, [0, 1], [0, 160]);
+  const glowTwoY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+
   return (
-    <section className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink pt-24">
+    <section ref={sectionRef} className="relative flex min-h-[100svh] items-center overflow-hidden bg-ink pt-24">
       <DashedGrid cell={110} className="opacity-40" />
-      <GlowBlob className="left-1/2 top-1/3 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2" />
-      <GlowBlob className="right-0 bottom-0 h-[380px] w-[380px] translate-x-1/3 translate-y-1/3 opacity-70" />
+      <GlowBlob
+        className="left-1/2 top-1/3 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2"
+        style={{ y: glowOneY }}
+      />
+      <GlowBlob
+        className="right-0 bottom-0 h-[380px] w-[380px] translate-x-1/3 translate-y-1/3 opacity-70"
+        style={{ y: glowTwoY }}
+      />
 
       {HERO_MEDIA_TYPE === "video" ? (
         <video
@@ -56,7 +71,10 @@ export default function Hero() {
         </span>
       ))}
 
-      <div className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-6 text-center lg:px-10">
+      <motion.div
+        style={{ y: contentY, opacity: contentOpacity }}
+        className="relative z-10 mx-auto flex w-full max-w-7xl flex-col items-center px-6 text-center lg:px-10"
+      >
         <motion.span
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -67,15 +85,19 @@ export default function Hero() {
           Events, engineered end-to-end
         </motion.span>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-8 break-words font-display text-[clamp(2.5rem,11vw,7.5rem)] font-black leading-[0.95] tracking-tight text-paper"
-        >
-          {siteConfig.shortName}
-          <span className="text-gradient-ember">.</span>
-        </motion.h1>
+        <h1 className="mt-8 flex flex-wrap items-end justify-center break-words font-display text-[clamp(2.5rem,11vw,7.5rem)] font-black leading-[0.95] tracking-tight text-paper">
+          <SplitWords text={siteConfig.shortName} />
+          <span className="overflow-hidden pb-[0.1em]">
+            <motion.span
+              className="inline-block text-gradient-ember"
+              initial={{ y: "110%" }}
+              animate={{ y: "0%" }}
+              transition={{ duration: 0.8, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            >
+              .
+            </motion.span>
+          </span>
+        </h1>
 
         <motion.p
           initial={{ opacity: 0, y: 16 }}
@@ -98,7 +120,7 @@ export default function Hero() {
             Get in touch
           </Button>
         </motion.div>
-      </div>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0 }}

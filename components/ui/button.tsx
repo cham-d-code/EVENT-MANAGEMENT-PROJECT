@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Magnetic } from "@/components/ui/magnetic";
 
 type ButtonProps = {
   href: string;
@@ -19,15 +20,17 @@ export function Button({ href, children, variant = "solid", className = "", with
       : "border border-paper/25 text-paper hover:border-ember hover:text-ember-2";
 
   return (
-    <Link href={href} className={`${base} ${styles} ${className}`}>
-      {children}
-      {withIcon && (
-        <ArrowUpRight
-          size={16}
-          className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-        />
-      )}
-    </Link>
+    <Magnetic>
+      <Link href={href} className={`${base} ${styles} ${className}`}>
+        {children}
+        {withIcon && (
+          <ArrowUpRight
+            size={16}
+            className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          />
+        )}
+      </Link>
+    </Magnetic>
   );
 }
 

@@ -8,6 +8,7 @@ import { events, eventCategories, categoryToFilter } from "@/data/events";
 import { Media } from "@/components/ui/media";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
+import { TiltCard } from "@/components/ui/tilt-card";
 import { fadeUp } from "@/lib/motion";
 
 type FilterValue = (typeof eventCategories)[number];
@@ -57,35 +58,34 @@ export default function WorkPage() {
         >
           {filtered.map((event) => (
             <motion.div key={event.slug} layout variants={fadeUp} initial="hidden" animate="show">
-              <Link
-                href={`/work/${event.slug}`}
-                className="group block overflow-hidden rounded-2xl border border-line-soft bg-ink-soft"
-              >
-                <div className="relative aspect-[4/3] w-full overflow-hidden">
-                  <Media
-                    src={event.coverImage}
-                    alt="{{ALT_TEXT}}"
-                    fill
-                    className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" />
-                  <span className="absolute right-4 top-4 rounded-full border border-paper/20 bg-ink/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-paper backdrop-blur-sm">
-                    {event.year}
-                  </span>
-                </div>
-                <div className="flex items-center justify-between gap-4 p-5">
-                  <div>
-                    <span className="text-xs font-semibold uppercase tracking-widest text-ember-2">
-                      {event.category}
+              <TiltCard className="group block overflow-hidden rounded-2xl border border-line-soft bg-ink-soft">
+                <Link href={`/work/${event.slug}`} className="block">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden">
+                    <Media
+                      src={event.coverImage}
+                      alt="{{ALT_TEXT}}"
+                      fill
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent" />
+                    <span className="absolute right-4 top-4 rounded-full border border-paper/20 bg-ink/60 px-3 py-1 text-[11px] font-semibold uppercase tracking-widest text-paper backdrop-blur-sm">
+                      {event.year}
                     </span>
-                    <h3 className="mt-1 font-display text-lg font-bold text-paper">{event.name}</h3>
                   </div>
-                  <ArrowUpRight
-                    size={18}
-                    className="shrink-0 text-fog-dim transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ember-2"
-                  />
-                </div>
-              </Link>
+                  <div className="flex items-center justify-between gap-4 p-5">
+                    <div>
+                      <span className="text-xs font-semibold uppercase tracking-widest text-ember-2">
+                        {event.category}
+                      </span>
+                      <h3 className="mt-1 font-display text-lg font-bold text-paper">{event.name}</h3>
+                    </div>
+                    <ArrowUpRight
+                      size={18}
+                      className="shrink-0 text-fog-dim transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ember-2"
+                    />
+                  </div>
+                </Link>
+              </TiltCard>
             </motion.div>
           ))}
         </motion.div>

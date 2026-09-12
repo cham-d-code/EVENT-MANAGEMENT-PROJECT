@@ -41,9 +41,10 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* No CSS `scroll-behavior: smooth` here on purpose — Lenis (see
+   components/providers/smooth-scroll.tsx) owns smooth scrolling on desktop.
+   Combining the two makes the browser's native smooth-scroll and Lenis's
+   rAF loop fight over scrollTop every frame, so it never settles. */
 
 body {
   background: var(--color-ink);
@@ -53,6 +54,13 @@ body {
 ::selection {
   background: var(--color-ember);
   color: var(--color-ink);
+}
+
+/* Applied by <Cursor> only after confirming a fine (mouse) pointer and no
+   reduced-motion preference, so touch/keyboard users always keep the native cursor. */
+.custom-cursor,
+.custom-cursor * {
+  cursor: none !important;
 }
 
 /* Decorative dashed grid overlay, echoing the reference image's

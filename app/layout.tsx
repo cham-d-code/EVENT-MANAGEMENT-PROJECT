@@ -5,6 +5,8 @@ import { siteConfig } from "@/config/site";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import PageTransition from "@/components/layout/page-transition";
+import SmoothScroll from "@/components/providers/smooth-scroll";
+import Cursor from "@/components/ui/cursor";
 
 const display = Unbounded({
   variable: "--font-display",
@@ -30,11 +32,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body className="min-h-screen bg-ink font-body text-paper antialiased selection:bg-ember selection:text-ink">
-        <Navbar />
-        <PageTransition>
-          <main>{children}</main>
-        </PageTransition>
-        <Footer />
+        <Cursor />
+        <SmoothScroll>
+          <Navbar />
+          <PageTransition>
+            <main>{children}</main>
+          </PageTransition>
+          <Footer />
+        </SmoothScroll>
       </body>
     </html>
   );
