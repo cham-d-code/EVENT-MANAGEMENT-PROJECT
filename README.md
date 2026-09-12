@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# {{COMPANY_NAME}} — Event Management Portfolio
 
-## Getting Started
+A portfolio website for an event management studio, built to convince
+prospective clients (companies, universities, organizers) that the team can
+run their event end-to-end — planning through execution.
 
-First, run the development server:
+## Tech stack
+
+- **Framework:** Next.js 16 (App Router) + TypeScript
+- **Styling:** Tailwind CSS v4
+- **Animation:** Framer Motion (section reveals, image hovers, page transitions)
+- **Icons:** lucide-react
+- **Content:** typed data files, no CMS
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where to edit content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| What | File |
+| --- | --- |
+| Company name, tagline, contact info, nav links, social links | [`/config/site.ts`](config/site.ts) |
+| Events (portfolio work) | [`/data/events.ts`](data/events.ts) |
+| Team members | [`/data/team.ts`](data/team.ts) |
+| Services | [`/data/services.ts`](data/services.ts) |
+| Logo | [`/public/logo.svg`](public/logo.svg) |
 
-## Learn More
+Anywhere real copy is missing, you'll find a `{{TOKEN_LIKE_THIS}}` placeholder
+— search the codebase for `{{` to find every spot that still needs real
+content.
 
-To learn more about Next.js, take a look at the following resources:
+## Adding a new event
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Append an object to the `events` array in [`/data/events.ts`](data/events.ts):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```ts
+{
+  slug: "my-new-event",
+  name: "My New Event",
+  category: "Other", // "Hackathon" | "Exposition" | "Interview Series" | "Other"
+  year: 2025,
+  client: "Client name",
+  location: "City, Country",
+  coverImage: "/images/events/my-new-event/cover.jpg",
+  gallery: ["/images/events/my-new-event/1.jpg", "/images/events/my-new-event/2.jpg"],
+  services: ["event-planning", "lighting"], // slugs from /data/services.ts
+  description: "First paragraph.\n\nSecond paragraph.",
+  featured: false, // set true to show on the homepage (3-4 max recommended)
+}
+```
 
-## Deploy on Vercel
+Then drop matching images into `public/images/events/my-new-event/` — see
+[`/public/images/README.md`](public/images/README.md).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Adding a new team member
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Append an object to the `team` array in [`/data/team.ts`](data/team.ts). The
+About page grid reflows automatically — no layout changes needed.
+
+## Changing the theme colors
+
+All colors are defined once as design tokens in the `@theme` block at the top
+of [`/app/globals.css`](app/globals.css) (`--color-ink`, `--color-ember`,
+`--color-paper`, etc.). Change a value there and it updates everywhere the
+corresponding Tailwind utility (`bg-ink`, `text-ember`, ...) is used.
+
+Fonts are wired in [`/app/layout.tsx`](app/layout.tsx) via `next/font/google`
+(Unbounded for display headings, Manrope for body text) — swap the font
+imports there to change typefaces.
+
+## Images
+
+No real images are committed. Every path is a placeholder that resolves to a
+graceful fallback until you add the real file — see
+[`/public/images/README.md`](public/images/README.md) for the full folder
+map and recommended sizes.
+
+## Contact form
+
+The contact form ([`/app/contact/page.tsx`](app/contact/page.tsx) and
+[`/components/contact/contact-form.tsx`](components/contact/contact-form.tsx))
+validates client-side and logs submissions to the console with a success
+state — there's no backend wired up yet. Look for the `TODO: wire to email
+service` comment in `contact-form.tsx` to connect it to Resend, Formspree, or
+your own API route.
+
+## Deployment
+
+The app is built to deploy on Vercel with zero configuration:
+
+```bash
+npm run build
+```
+
+## Out of scope for v1
+
+CMS integration, actual email sending, blog, multi-language support, and
+analytics wiring are intentionally left out — see the build spec for details.

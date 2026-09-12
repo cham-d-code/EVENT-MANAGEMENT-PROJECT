@@ -1,0 +1,38 @@
+# Image placeholders
+
+No real images are committed for v1. Every image path referenced in the data
+files points here — drop matching files in and they'll appear automatically
+(no code changes needed). Anywhere an image is missing, the site shows a
+graceful placeholder instead of a broken icon.
+
+## Where things go
+
+```
+public/
+  logo.svg                         # wordmark, swap for the real logo
+  images/
+    hero/
+      hero.jpg                     # homepage hero background image
+      poster.jpg                   # poster frame for the hero video (if used)
+      loop.mp4                     # looping hero background video (if used)
+    events/
+      {event-slug}/
+        cover.jpg                  # card + detail page hero image
+        1.jpg, 2.jpg, 3.jpg ...    # gallery images (any count)
+    team/
+      member-1.jpg ... member-8.jpg
+```
+
+Event slugs match the `slug` field in [`/data/events.ts`](../../data/events.ts).
+Team images match the `image` path set per member in [`/data/team.ts`](../../data/team.ts).
+
+## Recommended sizes
+
+- Event cover images: at least 1600×1200px, landscape.
+- Gallery images: at least 1200×1200px, square works best for the grid.
+- Team photos: at least 800×1000px, portrait (3:4).
+- Hero image: at least 1920×1080px.
+
+Swapping the homepage hero between an image and a looping video is a
+one-line change — see the `HERO_MEDIA_TYPE` constant at the top of
+[`/components/home/hero.tsx`](../../components/home/hero.tsx).
