@@ -1,25 +1,76 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Media } from "@/components/ui/media";
 import { Button } from "@/components/ui/button";
 import { DashedGrid, GlowBlob } from "@/components/ui/glow";
 import { SplitWords } from "@/components/ui/split-text";
 import { siteConfig } from "@/config/site";
+import { services } from "@/data/services";
 
-// Swap the hero background between a looping video and a static image
-// by changing this one flag.
-const HERO_MEDIA_TYPE: "image" | "video" = "image";
+// Swap the hero background between a cross-dissolving image slideshow, a
+// looping video, and a single static image by changing this one flag.
+// "slideshow" reads every image dropped into public/images/hero/slides —
+// see components/home/hero-slideshow.tsx and lib/hero-slides.ts.
+const HERO_MEDIA_TYPE: "slideshow" | "image" | "video" = "slideshow";
+
+const SLIDE_DURATION_MS = 6000;
+const CROSSFADE_SECONDS = 1.4;
+
+function subscribeReducedMotion(callback: () => void) {
+  const query = window.matchMedia("(prefers-reduced-motion: reduce)");
+  query.addEventListener("change", callback);
+  return () => query.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function HeroSlideshow({ slides }: { slides: string[] }) {
+  const [index, setIndex] = useState(0);
+  const reduceMotion = useSyncExternalStore(subscribeReducedMotion, getReducedMotionSnapshot, () => false);
+
+  useEffect(() => {
+    if (slides.length < 2 || reduceMotion) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % slides.length), SLIDE_DURATION_MS);
+    return () => clearInterval(id);
+  }, [slides.length, reduceMotion]);
+
+  return (
+    <div className="absolute inset-0">
+      {slides.map((src, i) => (
+        <motion.div
+          key={src}
+          className="absolute inset-0"
+          animate={{ opacity: i === index ? 1 : 0 }}
+          transition={{ duration: CROSSFADE_SECONDS, ease: "easeInOut" }}
+        >
+          <Media src={src} alt="{{ALT_TEXT}}" fill priority={i === 0} className="object-cover opacity-20" />
+        </motion.div>
+      ))}
+    </div>
+  );
+}
+
+// A small, fixed subset of services — enough to hint at the range of work
+// without crowding the hero. Pulled from the services data so the labels
+// stay correct if a service is ever renamed.
+const HERO_TAG_SLUGS = ["videography", "photography", "audio", "lighting"] as const;
+
+function serviceName(slug: string) {
+  return services.find((s) => s.slug === slug)?.name ?? slug;
+}
 
 const tags = [
-  { label: "Planning", className: "left-[6%] top-[22%] hidden lg:block" },
-  { label: "Production", className: "right-[6%] top-[30%] hidden lg:block" },
-  { label: "Est. 2016", className: "left-[10%] bottom-[18%] hidden lg:block" },
-  { label: "Full-Service", className: "right-[9%] bottom-[24%] hidden lg:block" },
+  { label: serviceName(HERO_TAG_SLUGS[0]), className: "left-[6%] top-[22%] hidden lg:block", delay: "0s" },
+  { label: serviceName(HERO_TAG_SLUGS[1]), className: "right-[6%] top-[30%] hidden lg:block", delay: "1.8s" },
+  { label: serviceName(HERO_TAG_SLUGS[2]), className: "left-[10%] bottom-[18%] hidden lg:block", delay: "3.5s" },
+  { label: serviceName(HERO_TAG_SLUGS[3]), className: "right-[9%] bottom-[24%] hidden lg:block", delay: "5.2s" },
 ];
 
-export default function Hero() {
+export default function Hero({ slides = [] }: { slides?: string[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
   const glowOneY = useTransform(scrollYProgress, [0, 1], [0, 160]);
@@ -50,6 +101,8 @@ export default function Hero() {
         >
           <source src="/images/hero/loop.mp4" type="video/mp4" />
         </video>
+      ) : HERO_MEDIA_TYPE === "slideshow" ? (
+        slides.length > 0 && <HeroSlideshow slides={slides} />
       ) : (
         <Media
           src="/images/hero/hero.jpg"
@@ -65,7 +118,8 @@ export default function Hero() {
       {tags.map((tag) => (
         <span
           key={tag.label}
-          className={`absolute z-10 rounded border border-dashed border-paper/20 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-fog ${tag.className}`}
+          style={{ animationDelay: tag.delay }}
+          className={`absolute z-10 animate-float rounded border border-dashed border-paper/20 px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-fog motion-reduce:animate-none ${tag.className}`}
         >
           [{tag.label}]
         </span>

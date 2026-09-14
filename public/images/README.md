@@ -12,7 +12,11 @@ public/
   logo.svg                         # wordmark, swap for the real logo
   images/
     hero/
-      hero.jpg                     # homepage hero background image
+      slides/
+        anything.jpg                # homepage hero background slideshow —
+        another-one.jpg              # drop any number of images in here,
+        ...                          # no code or data-file edit needed
+      hero.jpg                     # homepage hero background image (single-image mode)
       poster.jpg                   # poster frame for the hero video (if used)
       loop.mp4                     # looping hero background video (if used)
     events/
@@ -33,6 +37,21 @@ Team images match the `image` path set per member in [`/data/team.ts`](../../dat
 - Team photos: at least 800×1000px, portrait (3:4).
 - Hero image: at least 1920×1080px.
 
-Swapping the homepage hero between an image and a looping video is a
-one-line change — see the `HERO_MEDIA_TYPE` constant at the top of
-[`/components/home/hero.tsx`](../../components/home/hero.tsx).
+## Homepage hero background
+
+The hero supports three background modes — a cross-dissolving slideshow, a
+single static image, or a looping video — controlled by the `HERO_MEDIA_TYPE`
+constant at the top of [`/components/home/hero.tsx`](../../components/home/hero.tsx).
+It defaults to `"slideshow"`.
+
+**Slideshow mode** (the default): drop any number of images into
+`public/images/hero/slides/` — any filenames, any of `.jpg` `.jpeg` `.png`
+`.webp` `.avif`. They're read from disk at build/request time
+([`/lib/hero-slides.ts`](../../lib/hero-slides.ts)), sorted by filename, and
+cross-dissolve into one another automatically (6s per slide, 1.4s fade). No
+code or data-file edit needed — just add or remove files and restart/redeploy.
+With zero images in the folder, the hero simply shows no background media.
+
+Recommended size: at least 1920×1080px, landscape, similar exposure/color
+across the set so the cross-dissolve reads as one continuous background
+rather than a jump cut.

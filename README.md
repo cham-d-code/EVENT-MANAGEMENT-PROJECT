@@ -1,4 +1,4 @@
-# {{COMPANY_NAME}} — Event Management Portfolio
+# NINE-ONE EVENTS — Event Management Portfolio
 
 A portfolio website for an event management studio, built to convince
 prospective clients (companies, universities, organizers) that the team can
