@@ -14,7 +14,9 @@ export type LucideIconName =
   | "Video"
   | "Clapperboard"
   | "Camera"
-  | "Wand2";
+  | "Wand2"
+  | "Mic"
+  | "Sparkles";
 
 export const services: Service[] = [
   {
@@ -117,5 +119,31 @@ export const services: Service[] = [
       "Sound design",
     ],
     icon: "Wand2",
+  },
+  {
+    slug: "compering",
+    name: "Compering",
+    description:
+      "Professional hosts and MCs to guide your audience through the day. {{SERVICE_DESCRIPTION_PLACEHOLDER}}",
+    includes: [
+      "Event hosting & MC services",
+      "Script & cue-sheet preparation",
+      "Panel & guest introductions",
+      "Audience engagement",
+    ],
+    icon: "Mic",
+  },
+  {
+    slug: "decorations",
+    name: "Decorations",
+    description:
+      "Venue styling, staging, and themed décor. {{SERVICE_DESCRIPTION_PLACEHOLDER}}",
+    includes: [
+      "Venue styling & theming",
+      "Stage & backdrop design",
+      "Floral & installation décor",
+      "Setup & teardown",
+    ],
+    icon: "Sparkles",
   },
 ];

@@ -7,6 +7,8 @@ import {
   Clapperboard,
   Camera,
   Wand2,
+  Mic,
+  Sparkles,
   type LucideIcon,
 } from "lucide-react";
 import type { LucideIconName } from "@/data/services";
@@ -20,4 +22,6 @@ export const iconMap: Record<LucideIconName, LucideIcon> = {
   Clapperboard,
   Camera,
   Wand2,
+  Mic,
+  Sparkles,
 };

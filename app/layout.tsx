@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Unbounded, Manrope } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import Navbar from "@/components/layout/navbar";
@@ -8,16 +8,18 @@ import PageTransition from "@/components/layout/page-transition";
 import SmoothScroll from "@/components/providers/smooth-scroll";
 import Cursor from "@/components/ui/cursor";
 
-const display = Unbounded({
+const display = localFont({
+  src: "./fonts/Unbounded-Variable.woff2",
   variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
+  weight: "200 900",
+  display: "swap",
 });
 
-const body = Manrope({
+const body = localFont({
+  src: "./fonts/Manrope-Variable.woff2",
   variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "200 800",
+  display: "swap",
 });
 
 export const metadata: Metadata = {

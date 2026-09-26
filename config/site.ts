@@ -21,7 +21,7 @@ export const siteConfig = {
   ],
   stats: [
     { value: "10+", label: "Events delivered" },
-    { value: "20+", label: "Team members" },
+    { value: "10+", label: "Team members" },
     { value: "1,200+", label: "Hours of footage" },
     { value: "10,000+", label: "Attendees reached" },
   ],
