@@ -26,36 +26,22 @@ export function InstagramIcon(props: IconProps) {
   );
 }
 
-export function LinkedinIcon(props: IconProps) {
+export function FacebookIcon(props: IconProps) {
   return (
     <svg {...base(props)}>
-      <rect x="3" y="3" width="18" height="18" rx="2" />
-      <line x1="7.5" y1="10.5" x2="7.5" y2="17" />
-      <circle cx="7.5" cy="6.8" r="0.6" fill="currentColor" stroke="none" />
-      <path d="M11.5 17v-3.6c0-1.6 1-2.7 2.5-2.7s2.5 1 2.5 2.6V17" />
-      <line x1="11.5" y1="10.5" x2="11.5" y2="17" />
+      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
     </svg>
   );
 }
 
-export function YoutubeIcon(props: IconProps) {
+export function WhatsappIcon(props: IconProps) {
   return (
     <svg {...base(props)}>
-      <rect x="2.5" y="6" width="19" height="12" rx="4" />
-      <path d="M10.5 9.8v4.4l4-2.2z" fill="currentColor" stroke="none" />
-    </svg>
-  );
-}
-
-export function BehanceIcon(props: IconProps) {
-  return (
-    <svg {...base(props)}>
-      <path d="M4 7h4.2c1.5 0 2.6.9 2.6 2.3 0 1-.5 1.7-1.4 2 1.1.3 1.8 1.1 1.8 2.3 0 1.6-1.3 2.6-3 2.6H4V7z" />
-      <line x1="4.6" y1="10.9" x2="7.9" y2="10.9" />
-      <line x1="4.6" y1="14" x2="8.3" y2="14" />
-      <path d="M14 13.6c0 1.6 1 2.7 2.6 2.7 1.2 0 2-.5 2.4-1.4" />
-      <path d="M14.2 12.4c.2-1.2 1.1-2 2.4-2 1.4 0 2.3.9 2.4 2.3h-4.9" />
-      <line x1="15" y1="8" x2="19" y2="8" />
+      <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z" />
+      <path
+        transform="translate(6.6 6.6) scale(0.45)"
+        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"
+      />
     </svg>
   );
 }

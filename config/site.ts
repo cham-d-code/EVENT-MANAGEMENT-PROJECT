@@ -1,17 +1,15 @@
 export const siteConfig = {
   name: "NINE-ONE EVENTS",
   shortName: "NINE-ONE",
-  tagline: "{{TAGLINE}}",
+  tagline: "Moments, made intentional.",
   description: "{{META_DESCRIPTION}}",
   url: "https://example.com",
   email: "{{CONTACT_EMAIL}}",
   phone: "{{CONTACT_PHONE}}",
-  location: "{{LOCATION}}",
   social: {
+    facebook: "#",
+    whatsapp: "#",
     instagram: "#",
-    linkedin: "#",
-    youtube: "#",
-    behance: "#",
   },
   nav: [
     { label: "Work", href: "/work" },

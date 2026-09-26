@@ -1,13 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
-import { InstagramIcon, LinkedinIcon, YoutubeIcon, BehanceIcon } from "@/components/ui/social-icons";
+import { FacebookIcon, WhatsappIcon, InstagramIcon } from "@/components/ui/social-icons";
 import { siteConfig } from "@/config/site";
 
 const socials = [
+  { icon: FacebookIcon, href: siteConfig.social.facebook, label: "Facebook" },
+  { icon: WhatsappIcon, href: siteConfig.social.whatsapp, label: "WhatsApp" },
   { icon: InstagramIcon, href: siteConfig.social.instagram, label: "Instagram" },
-  { icon: LinkedinIcon, href: siteConfig.social.linkedin, label: "LinkedIn" },
-  { icon: YoutubeIcon, href: siteConfig.social.youtube, label: "YouTube" },
-  { icon: BehanceIcon, href: siteConfig.social.behance, label: "Behance" },
 ];
 
 export default function Footer() {
@@ -53,7 +52,6 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-fog">
               <li>{siteConfig.email}</li>
               <li>{siteConfig.phone}</li>
-              <li>{siteConfig.location}</li>
             </ul>
           </div>
         </div>

@@ -40,8 +40,8 @@ export default function AboutPage() {
         </Reveal>
 
         <Reveal delay={0.1} className="mt-10 space-y-5 text-base leading-relaxed text-fog sm:text-lg">
-          <p>{"{{STUDIO_STORY_PARA_1}}"} Placeholder copy: a short story about how the studio started, the gap it saw in event production, and the kind of work it set out to do.</p>
-          <p>{"{{STUDIO_STORY_PARA_2}}"} Placeholder copy: what the studio looks like today — the breadth of events it runs, the disciplines under one roof, and what clients can expect when they work with the team.</p>
+          <p>We are university colleagues at the University of Kelaniya who have always worked as one team. Together we plan, produce, and deliver events, and we have been doing it side by side for as long as we have known each other.</p>
+          <p>The events on this site are only part of the story. We have delivered many more, in partnership with the Ministry of Science and Technology and the Industrial Management Science Students&apos; Association (IMSSA), and our audiences have included honourable guests such as the Minister of Science and Technology. Whatever the occasion, we bring the same teamwork and care to every production.</p>
         </Reveal>
       </div>
 

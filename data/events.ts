@@ -28,7 +28,7 @@ export const events: Event[] = [
     gallery: gallery("hackx-grand-finale", 9),
     services: ["event-planning", "event-coordination", "lighting", "audio", "videography"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing the scale and format of the HackX Grand Finale, the run-of-show, and the outcome for the client.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph covering standout moments, attendee numbers, and production highlights.",
+      "hackX is a premier national inter-university startup and innovation challenge organized annually by the Industrial Management Science Students' Association (IMSSA) of the University of Kelaniya in collaboration with the Ministry of Science and Technology.\n\nThe grand finale is hosted at Waters Edge, Battaramulla, bringing together top undergraduate teams from across the country to pitch disruptive business models and software solutions aimed at driving real-world industrial impact.",
     featured: true,
   },
   {
@@ -42,7 +42,7 @@ export const events: Event[] = [
     gallery: gallery("hackx-jr-grand-finale", 5),
     services: ["event-planning", "event-coordination", "photography"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing HackX Jr, the junior edition of the flagship hackathon finale.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph on audience, format, and highlights.",
+      "Operating under the theme \"Give Shape to Ideas,\" hackX Jr. is a flagship national inter-school hackathon designed for students ranging from Grade 9 up to Advanced Level.\n\nIts grand finale is also hosted at Waters Edge, Battaramulla, marking the culmination of a months-long journey where school teams showcase creative tech proposals, receive mentorship from industry experts, and bridge school-level innovation with the professional tech sphere.",
     featured: true,
   },
   {
@@ -56,7 +56,7 @@ export const events: Event[] = [
     gallery: gallery("ideasprint", 7),
     services: ["event-planning", "event-coordination", "video-production"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing IdeaSprint's format and goals.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph on results and production notes.",
+      "iDEASPRINT is an intra-departmental ideation competition and ideashop hosted by IMSSA exclusively for students within the Department of Industrial Management.\n\nIt functions as a foundational platform where participants pitch raw, creative problem statements and early-stage concepts, acting as a vital stepping stone to equip aspiring innovators for major competitive arenas like the hackX preliminaries.",
     featured: true,
   },
   {
@@ -70,7 +70,7 @@ export const events: Event[] = [
     gallery: gallery("exposition", 13),
     services: ["event-planning", "lighting", "audio", "video-production", "photography"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing the Exposition showcase, exhibitors, and staging.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph on scale and production highlights.",
+      "Exposition is the official annual magazine published by the Department of Industrial Management at the University of Kelaniya.\n\nIssue 21 — officially launched on March 6, 2026, at the department auditorium — delivers forward-thinking perspectives blending information technology, modern management strategies, and student creativity through cutting-edge tech trends, academic research, and undergraduate writing.",
     featured: true,
   },
   {
@@ -140,8 +140,8 @@ export const events: Event[] = [
     gallery: gallery("hackx-jr-awareness", 8),
     services: ["event-planning", "event-coordination", "compering", "photography"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing the HackX Jr awareness programme leading up to the junior hackathon finale.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph on audience, format, and highlights.",
-    featured: false,
+      "Held at the University of Kelaniya with a hybrid reach spanning island-wide regional centers, the hackX Jr. Awareness Session serves as the official launchpad for the school-level competition cycle.\n\nIt features keynote speeches from prominent industry leaders covering tech hackathon evolution, AI futures, proposal structuring, and tech-business conversion, alongside a detailed breakdown of the official competition rulebook.",
+    featured: true,
   },
   {
     slug: "innox-ideax",
@@ -154,49 +154,21 @@ export const events: Event[] = [
     gallery: gallery("innox-ideax", 9),
     services: ["event-planning", "event-coordination", "decorations", "compering", "videography"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing InnoX – IdeaX, its format, teams, and goals.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph on audience, format, and highlights.",
+      "The semi-final elimination tiers — including InnoX (the hackX Jr. semi-finals held at the University of Kelaniya) alongside the parallel undergraduate ideaX semi-finals — represent the critical bridge between initial proposal submissions and the grand finales.\n\nDuring these rounds, shortlisted school and university teams present their prototypes or architectural concepts, defending their feasibility through live Q&A sessions administered by panel judges to secure their spots on the ultimate final stages at Waters Edge.",
     featured: false,
   },
   {
-    slug: "placeholder-event-9",
-    name: "Placeholder Event 9",
+    slug: "gloriance-sky-lounge",
+    name: "Gloriance Sky Lounge",
     category: "Other",
-    year: 2023,
-    client: "{{CLIENT_NAME}}",
-    location: "{{EVENT_LOCATION}}",
-    coverImage: "/images/events/placeholder-event-9/cover.jpg",
-    gallery: gallery("placeholder-event-9", 6),
-    services: ["event-planning", "photography"],
+    year: 2026,
+    client: "Gloriance Sky Lounge",
+    location: "Gloriance Sky Lounge",
+    coverImage: "/images/events/gloriance-sky-lounge/cover.jpg",
+    gallery: gallery("gloriance-sky-lounge", 1),
+    services: ["event-coordination", "video-production", "decorations"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy for event 9.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph for event 9.",
-    featured: false,
-  },
-  {
-    slug: "placeholder-event-10",
-    name: "Placeholder Event 10",
-    category: "Other",
-    year: 2023,
-    client: "{{CLIENT_NAME}}",
-    location: "{{EVENT_LOCATION}}",
-    coverImage: "/images/events/placeholder-event-10/cover.jpg",
-    gallery: gallery("placeholder-event-10", 6),
-    services: ["event-coordination", "audio"],
-    description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy for event 10.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph for event 10.",
-    featured: false,
-  },
-  {
-    slug: "placeholder-event-11",
-    name: "Placeholder Event 11",
-    category: "Other",
-    year: 2022,
-    client: "{{CLIENT_NAME}}",
-    location: "{{EVENT_LOCATION}}",
-    coverImage: "/images/events/placeholder-event-11/cover.jpg",
-    gallery: gallery("placeholder-event-11", 6),
-    services: ["video-production", "post-production"],
-    description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy for event 11.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph for event 11.",
+      "At Gloriance Sky Lounge, we managed the technical and event requirements for a variety of live entertainment events.\n\nThis included organizing and operating live F1 and FIFA streaming experiences, managing the streaming setup, and handling event decoration and venue preparation to create an engaging experience for attendees.",
     featured: false,
   },
 ];

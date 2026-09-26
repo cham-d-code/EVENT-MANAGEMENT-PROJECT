@@ -159,7 +159,7 @@ export default function Hero({ slides = [] }: { slides?: string[] }) {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="mt-6 max-w-xl text-balance text-base text-fog sm:text-lg"
         >
-          {siteConfig.tagline}. We plan, produce, and run events end-to-end — from the first
+          {siteConfig.tagline} We plan, produce, and run events end-to-end — from the first
           concept deck to the last strike of the stage.
         </motion.p>
 

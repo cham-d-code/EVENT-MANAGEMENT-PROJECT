@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Calendar, MapPin, User } from "lucide-react";
 import { events, getEventBySlug } from "@/data/events";
-import { services } from "@/data/services";
 import { Media } from "@/components/ui/media";
 import { Reveal } from "@/components/ui/reveal";
 import Gallery from "@/components/work/gallery";
@@ -26,7 +25,6 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
   const index = events.findIndex((e) => e.slug === slug);
   const prevEvent = events[(index - 1 + events.length) % events.length];
   const nextEvent = events[(index + 1) % events.length];
-  const usedServices = services.filter((s) => event.services.includes(s.slug));
 
   return (
     <article className="bg-ink pb-24 pt-24">
@@ -60,19 +58,6 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                 <Calendar size={16} className="text-fog-dim" /> {event.year}
               </span>
             </div>
-
-            {usedServices.length > 0 && (
-              <div className="mt-6 flex flex-wrap gap-2">
-                {usedServices.map((service) => (
-                  <span
-                    key={service.slug}
-                    className="rounded-full border border-paper/15 px-3 py-1 text-xs font-medium text-fog"
-                  >
-                    {service.name}
-                  </span>
-                ))}
-              </div>
-            )}
           </div>
         </Reveal>
 

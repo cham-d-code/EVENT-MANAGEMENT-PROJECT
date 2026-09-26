@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
@@ -11,7 +11,6 @@ export const metadata: Metadata = { title: "Contact" };
 const details = [
   { icon: Mail, label: "Email", value: siteConfig.email },
   { icon: Phone, label: "Phone", value: siteConfig.phone },
-  { icon: MapPin, label: "Location", value: siteConfig.location },
 ];
 
 export default function ContactPage() {
