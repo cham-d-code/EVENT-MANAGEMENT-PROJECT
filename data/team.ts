@@ -1,57 +1,63 @@
 export type TeamMember = {
   name: string;
   role: string;
-  bio: string;
-  image: string; // /images/team/{slug}.jpg
+  phone: string;
+  image: string; // /images/team/{slug}.png
 };
 
 export const team: TeamMember[] = [
   {
-    name: "{{MEMBER_1_NAME}}",
-    role: "{{MEMBER_1_ROLE}}",
-    bio: "{{MEMBER_1_BIO}}",
-    image: "/images/team/member-1.jpg",
+    name: "Nadeesha Nilupul",
+    role: "Event Planning Head",
+    phone: "+94 76 822 4295",
+    image: "/images/team/member-1.png",
   },
   {
-    name: "{{MEMBER_2_NAME}}",
-    role: "{{MEMBER_2_ROLE}}",
-    bio: "{{MEMBER_2_BIO}}",
-    image: "/images/team/member-2.jpg",
+    name: "Pasindu Kumarage",
+    role: "Event Coordination Head",
+    phone: "+94 71 984 6904",
+    image: "/images/team/member-2.png",
   },
   {
-    name: "{{MEMBER_3_NAME}}",
-    role: "{{MEMBER_3_ROLE}}",
-    bio: "{{MEMBER_3_BIO}}",
-    image: "/images/team/member-3.jpg",
+    name: "Akila Pilapitiya",
+    role: "Lighting Head",
+    phone: "+94 76 343 9451",
+    image: "/images/team/member-3.png",
   },
   {
-    name: "{{MEMBER_4_NAME}}",
-    role: "{{MEMBER_4_ROLE}}",
-    bio: "{{MEMBER_4_BIO}}",
-    image: "/images/team/member-4.jpg",
+    name: "Heshan Pramuditha",
+    role: "Audio Head",
+    phone: "+94 71 069 1571",
+    image: "/images/team/member-4.png",
   },
   {
-    name: "{{MEMBER_5_NAME}}",
-    role: "{{MEMBER_5_ROLE}}",
-    bio: "{{MEMBER_5_BIO}}",
-    image: "/images/team/member-5.jpg",
+    name: "Rashmika Harindith",
+    role: "Video Production Head",
+    phone: "+94 70 490 2526",
+    image: "/images/team/member-5.png",
   },
   {
-    name: "{{MEMBER_6_NAME}}",
-    role: "{{MEMBER_6_ROLE}}",
-    bio: "{{MEMBER_6_BIO}}",
-    image: "/images/team/member-6.jpg",
+    name: "Nipun Perera",
+    role: "Video Production Head",
+    phone: "+94 71 993 8765",
+    image: "/images/team/member-6.png",
   },
   {
-    name: "{{MEMBER_7_NAME}}",
-    role: "{{MEMBER_7_ROLE}}",
-    bio: "{{MEMBER_7_BIO}}",
-    image: "/images/team/member-7.jpg",
+    name: "Pasindu Dinuwan",
+    role: "Post Production Head",
+    phone: "+94 76 237 2588",
+    image: "/images/team/member-7.png",
   },
   {
-    name: "{{MEMBER_8_NAME}}",
-    role: "{{MEMBER_8_ROLE}}",
-    bio: "{{MEMBER_8_BIO}}",
-    image: "/images/team/member-8.jpg",
+    name: "Lavindu Binuwara",
+    role: "Compering Head",
+    phone: "+94 71 684 6120",
+    image: "/images/team/member-8.png",
+  },
+  {
+    name: "Chamika Denuwan",
+    role: "Photography & Videography Head",
+    phone: "+94 76 705 1429",
+    image: "/images/team/member-9.png",
   },
 ];

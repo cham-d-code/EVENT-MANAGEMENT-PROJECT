@@ -47,6 +47,7 @@ export default function Gallery({ images, eventName }: { images: string[]; event
                 src={src}
                 alt="{{ALT_TEXT}}"
                 fill
+                sizes="(min-width: 1024px) 320px, (min-width: 640px) 33vw, 50vw"
                 className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
               />
             </button>
@@ -100,7 +101,7 @@ export default function Gallery({ images, eventName }: { images: string[]; event
               className="relative mx-auto aspect-[4/3] w-[90vw] max-w-3xl"
               onClick={(e) => e.stopPropagation()}
             >
-              <Media src={images[activeIndex]} alt={`${eventName} — {{ALT_TEXT}}`} fill className="object-contain" />
+              <Media src={images[activeIndex]} alt={`${eventName} — {{ALT_TEXT}}`} fill sizes="(min-width: 768px) 768px, 90vw" className="object-contain" />
             </motion.div>
           </motion.div>
         )}

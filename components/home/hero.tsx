@@ -47,7 +47,7 @@ function HeroSlideshow({ slides }: { slides: string[] }) {
           animate={{ opacity: i === index ? 1 : 0 }}
           transition={{ duration: CROSSFADE_SECONDS, ease: "easeInOut" }}
         >
-          <Media src={src} alt="{{ALT_TEXT}}" fill priority={i === 0} className="object-cover opacity-20" />
+          <Media src={src} alt="{{ALT_TEXT}}" fill priority={i === 0} sizes="100vw" className="object-cover opacity-20" />
         </motion.div>
       ))}
     </div>
@@ -109,6 +109,7 @@ export default function Hero({ slides = [] }: { slides?: string[] }) {
           alt="{{ALT_TEXT}}"
           fill
           priority
+          sizes="100vw"
           className="absolute inset-0 object-cover opacity-20"
         />
       )}

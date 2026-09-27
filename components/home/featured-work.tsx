@@ -42,6 +42,7 @@ export default function FeaturedWork() {
                       src={event.coverImage}
                       alt="{{ALT_TEXT}}"
                       fill
+                      sizes="(min-width: 768px) 50vw, 100vw"
                       className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent opacity-90" />

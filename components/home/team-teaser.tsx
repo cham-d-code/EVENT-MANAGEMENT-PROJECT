@@ -27,7 +27,7 @@ export default function TeamTeaser() {
                   className="relative h-16 w-16 overflow-hidden rounded-full border-2 border-ink-soft sm:h-20 sm:w-20"
                   style={{ zIndex: preview.length - i }}
                 >
-                  <Media src={member.image} alt="{{ALT_TEXT}}" fill className="object-cover" />
+                  <Media src={member.image} alt="{{ALT_TEXT}}" fill sizes="(min-width: 640px) 80px, 64px" className="object-cover" />
                 </div>
               ))}
             </div>

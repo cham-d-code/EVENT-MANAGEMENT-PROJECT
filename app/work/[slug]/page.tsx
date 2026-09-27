@@ -29,7 +29,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
   return (
     <article className="bg-ink pb-24 pt-24">
       <div className="relative aspect-[16/9] w-full overflow-hidden sm:aspect-[16/7]">
-        <Media src={event.coverImage} alt="{{ALT_TEXT}}" fill priority className="object-cover" />
+        <Media src={event.coverImage} alt="{{ALT_TEXT}}" fill priority sizes="100vw" className="object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
       </div>
 
