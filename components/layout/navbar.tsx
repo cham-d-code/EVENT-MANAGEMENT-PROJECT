@@ -34,8 +34,7 @@ export default function Navbar() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
           <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.svg" alt={siteConfig.name} width={36} height={36} priority />
-            <span className="font-display text-lg font-bold tracking-tight text-paper">{siteConfig.name}</span>
+            <Image src="/logo.png" alt={siteConfig.name} width={151} height={36} priority />
           </Link>
 
           <nav className="hidden items-center gap-2 md:flex" onMouseLeave={() => setHovered(null)}>

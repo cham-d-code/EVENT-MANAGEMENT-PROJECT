@@ -16,8 +16,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr_1fr]">
           <div>
             <Link href="/" className="flex items-center gap-3">
-              <Image src="/logo.svg" alt={siteConfig.name} width={36} height={36} />
-              <span className="font-display text-xl font-bold text-paper">{siteConfig.name}</span>
+              <Image src="/logo.png" alt={siteConfig.name} width={151} height={36} />
             </Link>
             <p className="mt-4 max-w-sm text-sm text-fog">{siteConfig.tagline}</p>
             <div className="mt-6 flex items-center gap-3">

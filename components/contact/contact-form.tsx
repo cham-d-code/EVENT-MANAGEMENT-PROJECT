@@ -7,7 +7,6 @@ import { CheckCircle2 } from "lucide-react";
 type FormState = {
   name: string;
   email: string;
-  eventType: string;
   eventDate: string;
   message: string;
 };
@@ -15,12 +14,9 @@ type FormState = {
 const initialState: FormState = {
   name: "",
   email: "",
-  eventType: "",
   eventDate: "",
   message: "",
 };
-
-const eventTypes = ["Hackathon", "Exposition", "Corporate", "University", "Other"];
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
@@ -35,7 +31,6 @@ export default function ContactForm() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
       next.email = "Please enter a valid email address.";
     }
-    if (!values.eventType) next.eventType = "Please select an event type.";
     if (!values.eventDate) next.eventDate = "Please choose an event date.";
     if (!values.message.trim()) next.message = "Tell us a little about your event.";
     return next;
@@ -100,20 +95,6 @@ export default function ContactForm() {
             className={inputClass(!!errors.email)}
             placeholder="jane@company.com"
           />
-        </Field>
-        <Field label="Event type" error={errors.eventType}>
-          <select
-            value={form.eventType}
-            onChange={(e) => handleChange("eventType", e.target.value)}
-            className={inputClass(!!errors.eventType)}
-          >
-            <option value="">Select an option</option>
-            {eventTypes.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
         </Field>
         <Field label="Event date" error={errors.eventDate}>
           <input

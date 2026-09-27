@@ -38,8 +38,7 @@ export default function ServicesPage() {
                     <Icon size={22} />
                   </div>
                   <h3 className="mt-6 font-display text-xl font-bold text-paper">{service.name}</h3>
-                  <p className="mt-3 text-sm text-fog">{service.description}</p>
-                  <ul className="mt-6 space-y-2.5">
+                  <ul className="mt-5 space-y-2.5">
                     {service.includes.map((item) => (
                       <li key={item} className="flex items-start gap-2 text-sm text-fog">
                         <Check size={16} className="mt-0.5 shrink-0 text-ember" />
