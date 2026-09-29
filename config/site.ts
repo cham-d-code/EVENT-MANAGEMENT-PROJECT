@@ -4,8 +4,8 @@ export const siteConfig = {
   tagline: "Moments, made intentional.",
   description: "{{META_DESCRIPTION}}",
   url: "https://example.com",
-  email: "{{CONTACT_EMAIL}}",
-  phone: "{{CONTACT_PHONE}}",
+  email: "events@nineone.live",
+  phone: "+94 71 759 4613",
   social: {
     facebook: "#",
     whatsapp: "#",
