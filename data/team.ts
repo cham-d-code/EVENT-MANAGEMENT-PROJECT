@@ -31,7 +31,7 @@ export const team: TeamMember[] = [
     image: "/images/team/member-4.png",
   },
   {
-    name: "Rashmika Harindith",
+    name: "Rashmika Nammunige",
     role: "Video Production Head",
     phone: "+94 70 490 2526",
     image: "/images/team/member-5.png",

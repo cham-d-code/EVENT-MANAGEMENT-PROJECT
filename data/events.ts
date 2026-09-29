@@ -81,10 +81,10 @@ export const events: Event[] = [
     client: "IMSSA UOK",
     location: "KASSA Studio",
     coverImage: "/images/events/exposition-interview-series-vol-1/cover.jpg",
-    gallery: gallery("exposition-interview-series-vol-1", 6),
-    services: ["videography", "post-production"],
+    gallery: gallery("exposition-interview-series-vol-1", 1),
+    services: ["lighting", "audio", "videography", "event-coordination"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing Volume 1 of the Exposition interview series.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph on featured guests and format.",
+      "In this debut episode, Formula 3 driver Yevan David shares his journey of breaking barriers, racing against the best, and proving that talent knows no boundaries.\n\nAs a team, we took care of lighting, camera handling, event flow, shot direction, and audio capturing.",
     featured: false,
   },
   {
@@ -95,10 +95,10 @@ export const events: Event[] = [
     client: "IMSSA UOK",
     location: "KASSA Studio",
     coverImage: "/images/events/exposition-interview-series-vol-2/cover.jpg",
-    gallery: gallery("exposition-interview-series-vol-2", 6),
-    services: ["videography", "post-production"],
+    gallery: gallery("exposition-interview-series-vol-2", 1),
+    services: ["lighting", "audio", "videography", "event-coordination"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing Volume 2 of the Exposition interview series.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph on featured guests and format.",
+      "In this episode, we sit down with Nikin Matharaarachchi, Founder & CEO of Synapse AI Labs and a Forbes 30 Under 30 Asia honoree, to unpack the journey behind one of Sri Lanka's most talked-about AI ventures.\n\nAs a team, we took care of lighting, camera handling, event flow, shot direction, and audio capturing.",
     featured: false,
   },
   {
