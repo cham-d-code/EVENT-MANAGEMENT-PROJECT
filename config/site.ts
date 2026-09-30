@@ -15,12 +15,11 @@ export const siteConfig = {
     { label: "Work", href: "/work" },
     { label: "Services", href: "/services" },
     { label: "About", href: "/about" },
-    { label: "Contact", href: "/contact" },
   ],
   stats: [
     { value: "10+", label: "Events delivered" },
     { value: "10+", label: "Team members" },
     { value: "1,200+", label: "Hours of footage" },
-    { value: "10,000+", label: "Attendees reached" },
+    { value: "5,000+", label: "Attendees reached" },
   ],
 };

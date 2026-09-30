@@ -31,19 +31,44 @@ const pillars = [
 
 export default function AboutPage() {
   return (
-    <div className="relative bg-ink pb-24 pt-32 lg:pb-32">
+    <div className="relative bg-ink pb-24 lg:pb-32">
       <GlowBlob className="left-0 top-0 h-[440px] w-[440px] -translate-x-1/3 -translate-y-1/3 opacity-50" />
 
-      <div className="mx-auto max-w-5xl px-6 lg:px-10">
-        <Reveal>
-          <SectionHeading eyebrow="About us" title="The people behind the production" />
-        </Reveal>
+      <section className="relative mx-auto flex min-h-[100svh] max-w-5xl flex-col justify-center px-6 pb-16 pt-28 lg:px-10">
+        <div>
+          <Reveal>
+            <SectionHeading eyebrow="About us" title="The people behind the production" />
+          </Reveal>
 
-        <Reveal delay={0.1} className="mt-10 space-y-5 text-base leading-relaxed text-fog sm:text-lg">
-          <p>We are university colleagues at the University of Kelaniya who have always worked as one team. Together we plan, produce, and deliver events, and we have been doing it side by side for as long as we have known each other.</p>
-          <p>The events on this site are only part of the story. We have delivered many more, in partnership with the Ministry of Science and Technology and the Industrial Management Science Students&apos; Association (IMSSA), and our audiences have included honourable guests such as the Minister of Science and Technology. Whatever the occasion, we bring the same teamwork and care to every production.</p>
-        </Reveal>
-      </div>
+          <Reveal delay={0.1} className="mt-10 space-y-5 text-base leading-relaxed text-fog sm:text-lg">
+            <p>We are university colleagues at the University of Kelaniya who have always worked as one team. Together we plan, produce, and deliver events, and we have been doing it side by side for as long as we have known each other.</p>
+            <p>The events on this site are only part of the story. We have delivered many more, in partnership with the Ministry of Science and Technology and the Industrial Management Science Students&apos; Association (IMSSA), and our audiences have included honourable guests such as the Minister of Science and Technology. Whatever the occasion, we bring the same teamwork and care to every production.</p>
+          </Reveal>
+
+          <Reveal delay={0.2} className="mt-12 border-y border-line-soft py-7">
+            <div className="grid gap-7 sm:grid-cols-3 sm:gap-8">
+              <div>
+                <h3 className="font-display text-sm font-bold text-paper">Longstanding chemistry</h3>
+                <p className="mt-2 text-sm leading-relaxed text-fog">
+                  A university-built team that already knows how to move as one.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-display text-sm font-bold text-paper">End-to-end ownership</h3>
+                <p className="mt-2 text-sm leading-relaxed text-fog">
+                  Planning, production, and delivery stay connected from brief to show day.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-display text-sm font-bold text-paper">Proven in the room</h3>
+                <p className="mt-2 text-sm leading-relaxed text-fog">
+                  Experience across institutional, public-facing, and live events.
+                </p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
       <div className="mx-auto mt-24 max-w-7xl px-6 lg:px-10">
         <Reveal>

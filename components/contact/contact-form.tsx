@@ -3,10 +3,12 @@
 import { useState, type FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
+import { siteConfig } from "@/config/site";
 
 type FormState = {
   name: string;
   email: string;
+  phone: string;
   eventDate: string;
   message: string;
 };
@@ -14,6 +16,7 @@ type FormState = {
 const initialState: FormState = {
   name: "",
   email: "",
+  phone: "",
   eventDate: "",
   message: "",
 };
@@ -22,6 +25,8 @@ export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState<string | null>(null);
 
   function validate(values: FormState) {
     const next: Partial<Record<keyof FormState, string>> = {};
@@ -31,6 +36,7 @@ export default function ContactForm() {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) {
       next.email = "Please enter a valid email address.";
     }
+    if (!/^\d{9}$/.test(values.phone)) next.phone = "Enter a 9-digit phone number.";
     if (!values.eventDate) next.eventDate = "Please choose an event date.";
     if (!values.message.trim()) next.message = "Tell us a little about your event.";
     return next;
@@ -40,17 +46,46 @@ export default function ContactForm() {
     setForm((prev) => ({ ...prev, [key]: value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const nextErrors = validate(form);
     setErrors(nextErrors);
     if (Object.keys(nextErrors).length > 0) return;
 
-    // TODO: wire to email service (Resend / Formspree / API route) for v2.
-    console.log("Contact form submission:", form);
+    setIsSubmitting(true);
+    setSubmissionError(null);
 
-    setSubmitted(true);
-    setForm(initialState);
+    try {
+      const response = await fetch("/api/inbox/append", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          from: `${form.name.trim()} <${form.email.trim()}>`,
+          to: siteConfig.email,
+          subject: "New contact form enquiry",
+          text: [
+            `Name: ${form.name.trim()}`,
+            `Email: ${form.email.trim()}`,
+            `Phone: +94${form.phone}`,
+            `Event date: ${form.eventDate}`,
+            "",
+            "Message:",
+            form.message.trim(),
+          ].join("\n"),
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Unable to submit contact form");
+      }
+
+      setSubmitted(true);
+      setForm(initialState);
+    } catch {
+      setSubmissionError("We couldn't send your message. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   if (submitted) {
@@ -96,6 +131,24 @@ export default function ContactForm() {
             placeholder="jane@company.com"
           />
         </Field>
+        <Field label="Phone number" error={errors.phone}>
+          <div className="relative">
+            <span className="pointer-events-none absolute inset-y-0 left-4 flex items-center border-r border-line pr-3 text-sm font-semibold text-paper">
+              +94
+            </span>
+            <input
+              type="tel"
+              value={form.phone}
+              onChange={(e) => handleChange("phone", e.target.value.replace(/\D/g, "").slice(0, 9))}
+              inputMode="numeric"
+              autoComplete="tel-national"
+              maxLength={9}
+              pattern="[0-9]{9}"
+              className={`${inputClass(!!errors.phone)} pl-16`}
+              placeholder="771234567"
+            />
+          </div>
+        </Field>
         <Field label="Event date" error={errors.eventDate}>
           <input
             type="date"
@@ -116,12 +169,27 @@ export default function ContactForm() {
         />
       </Field>
 
+      <AnimatePresence>
+        {submissionError && (
+          <motion.p
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            role="alert"
+            className="text-sm text-ember-2"
+          >
+            {submissionError}
+          </motion.p>
+        )}
+      </AnimatePresence>
+
       <motion.button
         whileTap={{ scale: 0.98 }}
         type="submit"
-        className="w-full rounded-full bg-gradient-to-r from-ember-2 via-ember to-ember-deep px-6 py-3.5 text-sm font-semibold text-ink transition-shadow duration-300 hover:shadow-[0_10px_30px_-8px_rgba(255,106,31,0.55)] sm:w-auto"
+        disabled={isSubmitting}
+        className="w-full rounded-full bg-gradient-to-r from-ember-2 via-ember to-ember-deep px-6 py-3.5 text-sm font-semibold text-ink transition-shadow duration-300 hover:shadow-[0_10px_30px_-8px_rgba(255,106,31,0.55)] disabled:cursor-not-allowed disabled:opacity-70 sm:w-auto"
       >
-        Send message
+        {isSubmitting ? "Sending..." : "Send message"}
       </motion.button>
     </form>
   );
