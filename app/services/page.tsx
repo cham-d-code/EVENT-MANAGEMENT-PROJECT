@@ -10,7 +10,7 @@ export const metadata: Metadata = { title: "Services" };
 
 export default function ServicesPage() {
   return (
-    <div className="relative bg-ink pb-24 pt-32 lg:pb-32">
+    <div className="relative overflow-x-clip bg-ink pb-24 pt-32 lg:pb-32">
       <GlowBlob className="right-0 top-0 h-[420px] w-[420px] -translate-y-1/3 translate-x-1/3 opacity-50" />
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <Reveal>
