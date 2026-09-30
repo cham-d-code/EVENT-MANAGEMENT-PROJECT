@@ -123,10 +123,10 @@ export const events: Event[] = [
     client: "IMSSA UOK",
     location: "KASSA Studio",
     coverImage: "/images/events/exposition-interview-series-vol-4/cover.jpg",
-    gallery: gallery("exposition-interview-series-vol-4", 6),
-    services: ["videography", "post-production"],
+    gallery: gallery("exposition-interview-series-vol-4", 1),
+    services: ["lighting", "audio", "videography", "event-coordination"],
     description:
-      "{{EVENT_DESCRIPTION_PARA_1}} Placeholder copy describing Volume 4 of the Exposition interview series.\n\n{{EVENT_DESCRIPTION_PARA_2}} A second placeholder paragraph on featured guests and format.",
+      "In this episode, we sit down with Bernadin Jayasinghe.\n\nAs a team, we took care of lighting, camera handling, event flow, shot direction, and audio capturing.",
     featured: false,
   },
   {
