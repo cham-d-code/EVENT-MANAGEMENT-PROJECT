@@ -55,11 +55,10 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-line-soft pt-8 text-xs text-fog-dim md:flex-row">
+        <div className="mt-16 border-t border-line-soft pt-8 text-center text-xs text-fog-dim">
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>
-          <p>Built with Next.js, Tailwind CSS &amp; Framer Motion.</p>
         </div>
       </div>
     </footer>
