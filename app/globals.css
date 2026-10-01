@@ -18,17 +18,21 @@
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 
-  --animate-marquee: marquee 28s linear infinite;
   --animate-float: float 7s ease-in-out infinite;
 }
 
-@keyframes marquee {
+@keyframes services-marquee {
   from {
-    transform: translateX(0);
-  }
-  to {
     transform: translateX(-50%);
   }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.services-marquee-track {
+  animation: services-marquee 28s linear infinite;
+  will-change: transform;
 }
 
 @keyframes float {

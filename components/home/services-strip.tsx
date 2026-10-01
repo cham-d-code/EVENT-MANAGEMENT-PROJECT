@@ -32,8 +32,8 @@ export default function ServicesStrip() {
   return (
     <section className="relative border-y border-line-soft bg-ink-soft py-10">
       <Reveal>
-        <div className="group overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
-          <div className="flex w-max animate-marquee [animation-play-state:running] group-hover:[animation-play-state:paused] motion-reduce:animate-none">
+        <div className="overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]">
+          <div className="services-marquee-track flex w-max">
             <ServiceRow />
             <ServiceRow ariaHidden />
           </div>
